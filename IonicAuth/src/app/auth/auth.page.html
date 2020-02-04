@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color='secondary'>
+    <ion-title>Auth</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card box-shadow>
+        <ion-card-content>
+            <ion-segment [(ngModel)] = "activeForm">
+                <ion-segment-button value="login">
+                    Login
+                </ion-segment-button>
+                <ion-segment-button value="register">
+                    Register
+                </ion-segment-button>
+            </ion-segment>
+
+            <div [ngSwitch]="activeForm">
+                <div *ngSwitchCase="'login'">
+                    <ion-item>
+                        <ion-label>Email</ion-label>
+                        <ion-input type="email" [(ngModel)]="loginForm.email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Password</ion-label>
+                        <ion-input type="password" [(ngModel)]="loginForm.password"></ion-input>
+                    </ion-item>
+
+                    <button ion-button block (click)="doLogin(loginForm)">Login</button>
+                </div>
+
+                <div *ngSwitchCase="'register'">
+                    <ion-item>
+                        <ion-label>name</ion-label>
+                        <ion-input type="text" [(ngModel)]="registerForm.name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Email</ion-label>
+                        <ion-input type="email" [(ngModel)]="registerForm.email"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Password</ion-label>
+                        <ion-input type="password" [(ngModel)]="registerForm.password"></ion-input>
+                    </ion-item>
+
+                    <button ion-button block (click)="doRegister(registerForm)">Register</button>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>
